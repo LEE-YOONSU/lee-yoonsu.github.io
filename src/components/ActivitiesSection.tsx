@@ -1,29 +1,62 @@
-import { Users, Trophy, BookOpen, Code } from "lucide-react";
+import { motion } from "framer-motion";
 
 const activities = [
   {
-    icon: Users,
-    period: "2022.03 - 현재",
-    title: "OO대학교 AI 학회",
-    description: "학회 부회장으로 활동하며 주간 논문 리딩, 세미나 운영 및 스터디 그룹 이끌기.",
+    date: "2025.02",
+    title: "Data Science Bootcamp",
+    location: "ZeroBase",
+    image: "https://lee-yoonsu.github.io/zerobase.png",
   },
   {
-    icon: Code,
-    period: "2023.07 - 2023.08",
-    title: "네이버 부스트캠프 AI Tech",
-    description: "6주간의 집중 AI 교육 프로그램 수료. 팀 프로젝트로 최종 발표 우수상 수상.",
+    date: "2025.02",
+    title: "Graduation Ceremony",
+    location: "Kyungwoon University",
+    detail: "B.S. in UAV Engineering",
+    image: "https://lee-yoonsu.github.io/IMG_0677.JPEG",
   },
   {
-    icon: Trophy,
-    period: "2023.09",
-    title: "Kaggle Competition - 상위 10%",
-    description: "자연어 처리 관련 Kaggle 대회에서 상위 10% 달성 (Silver Medal).",
+    date: "2024.09",
+    title: "Media Art Project",
+    location: "Incheon International Airport",
+    detail: "Flying Object R&D",
+    image: "https://lee-yoonsu.github.io/IMG_8537.JPEG",
   },
   {
-    icon: BookOpen,
-    period: "2022.06 - 2022.08",
-    title: "오픈소스 컨트리뷰션 아카데미",
-    description: "Hugging Face Transformers 프로젝트에 기여. 한국어 토크나이저 개선 PR 머지.",
+    date: "2024.05",
+    title: "Dronebot Combat Competition",
+    location: "Kyungwoon University, Gyeongbuk",
+    image: "https://lee-yoonsu.github.io/IMG_3585.JPG",
+  },
+  {
+    date: "2024.01",
+    title: "International Capstone Design",
+    location: "Yamato University, Japan",
+    image: "https://lee-yoonsu.github.io/IMG_1087.JPG",
+  },
+  {
+    date: "2023.11",
+    title: "Capstone Design Competition",
+    location: "Yeungnam University, Gyeongbuk",
+    detail: "Excellence Award",
+    image: "https://lee-yoonsu.github.io/IMG_0835.JPEG",
+  },
+  {
+    date: "2023.11",
+    title: "Capstone Design Competition",
+    location: "Kyungwoon University, Gyeongbuk",
+    detail: "Excellence Award",
+    image: "https://lee-yoonsu.github.io/kyungwoon_capstone_group.JPG",
+  },
+  {
+    date: "2023.06",
+    title: "Autonomous Driving Competition",
+    location: "KMU, Seoul",
+  },
+  {
+    date: "2023.01",
+    title: "Autonomous Driving Competition",
+    location: "Yeungnam University",
+    image: "https://lee-yoonsu.github.io/%EC%98%81%EB%82%A8%EB%8C%80%20%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%20%EB%8C%80%ED%9A%8C_1.jpg",
   },
 ];
 
@@ -31,34 +64,56 @@ const ActivitiesSection = () => {
   return (
     <section id="activities" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Activities
-        </h2>
-        <div className="w-16 h-0.5 bg-accent mb-12" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Activities & Photos
+          </h2>
+          <div className="w-16 h-0.5 bg-accent mb-12" />
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {activities.map((item, i) => (
-            <div
+            <motion.div
               key={i}
-              className="group p-6 rounded-lg border bg-card hover:shadow-md transition-all hover:border-accent/30"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: (i % 3) * 0.1 }}
+              className="group relative rounded-xl border bg-card overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <item.icon className="w-4 h-4 text-accent" />
+              {item.image ? (
+                <div className="aspect-[4/3] overflow-hidden bg-secondary">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <div>
-                  <p className="text-xs font-medium text-accent tracking-wide uppercase mb-1">
-                    {item.period}
-                  </p>
-                  <h4 className="font-display text-base font-semibold text-foreground mb-2">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
+              ) : (
+                <div className="aspect-[4/3] bg-secondary/80 flex items-center justify-center">
+                  <span className="text-muted-foreground/40 text-xs">No image</span>
                 </div>
+              )}
+              <div className="p-4">
+                <p className="text-[10px] font-medium tracking-[0.15em] uppercase text-accent mb-1">
+                  {item.date}
+                </p>
+                <h4 className="font-display text-sm font-semibold text-foreground mb-1 leading-snug">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-muted-foreground">{item.location}</p>
+                {item.detail && (
+                  <span className="inline-block mt-2 px-2 py-0.5 bg-accent/10 text-accent text-[10px] font-medium rounded">
+                    {item.detail}
+                  </span>
+                )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

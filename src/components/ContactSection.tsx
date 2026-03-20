@@ -1,49 +1,58 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
+
+const links = [
+  { icon: Mail, label: "Email", href: "mailto:yoonsu.lee@example.com" },
+  { icon: Github, label: "GitHub", href: "https://github.com/lee-yoonsu", external: true },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", external: true },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com", external: true },
+];
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 px-6 bg-secondary/50">
+    <section id="contact" className="py-24 px-6">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Contact
-        </h2>
-        <div className="w-16 h-0.5 bg-accent mx-auto mb-8" />
-        <p className="text-muted-foreground mb-10 leading-relaxed">
-          연구 협업, 대학원 진학 관련 문의, 또는 채용 관련 연락을 환영합니다.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Get in Touch
+          </h2>
+          <div className="w-16 h-0.5 bg-accent mx-auto mb-8" />
+          <p className="text-muted-foreground mb-10 leading-relaxed">
+            Feel free to reach out for research collaborations, 
+            graduate school inquiries, or career opportunities.
+          </p>
+        </motion.div>
 
-        <div className="flex items-center justify-center gap-6">
-          <a
-            href="mailto:email@example.com"
-            className="flex items-center gap-2 px-5 py-3 bg-card border rounded-md text-sm font-medium text-foreground hover:border-accent/50 hover:shadow-sm transition-all"
-          >
-            <Mail className="w-4 h-4 text-accent" />
-            Email
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-3 bg-card border rounded-md text-sm font-medium text-foreground hover:border-accent/50 hover:shadow-sm transition-all"
-          >
-            <Github className="w-4 h-4 text-accent" />
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-3 bg-card border rounded-md text-sm font-medium text-foreground hover:border-accent/50 hover:shadow-sm transition-all"
-          >
-            <Linkedin className="w-4 h-4 text-accent" />
-            LinkedIn
-          </a>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap items-center justify-center gap-4"
+        >
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="flex items-center gap-2 px-5 py-3 bg-card border rounded-lg text-sm font-medium text-foreground hover:border-accent/50 hover:shadow-md transition-all duration-200"
+            >
+              <link.icon className="w-4 h-4 text-accent" />
+              {link.label}
+            </a>
+          ))}
+        </motion.div>
       </div>
 
       <div className="max-w-5xl mx-auto mt-20 pt-8 border-t text-center">
         <p className="text-xs text-muted-foreground">
-          © 2024 홍길동. All rights reserved.
+          © 2025 Yoon-su Lee. All rights reserved.
         </p>
       </div>
     </section>

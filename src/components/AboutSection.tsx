@@ -1,93 +1,134 @@
-import { GraduationCap, Briefcase, Award } from "lucide-react";
+import { GraduationCap, Briefcase, Building2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const timelineItems = [
   {
     icon: GraduationCap,
-    period: "2020.03 - 현재",
-    title: "OO대학교 컴퓨터공학과",
-    description: "학사 과정 재학 중 | GPA 4.2/4.5",
+    period: "2020 - 2025",
+    title: "Kyungwoon University",
+    description: "B.S. in Unmanned Aerial Vehicle Engineering",
   },
   {
     icon: Briefcase,
-    period: "2023.06 - 2023.12",
-    title: "OO연구소 학부연구생",
-    description: "자연어처리 연구실에서 학부연구생으로 활동",
+    period: "2023 - 2025",
+    title: "Control Systems Laboratory",
+    description: "Undergraduate Researcher — UAV control, navigation, and autonomous flight systems",
   },
   {
-    icon: Award,
-    period: "2023.11",
-    title: "OO 학술대회 우수논문상",
-    description: "딥러닝 기반 텍스트 분류 모델 연구로 수상",
+    icon: Building2,
+    period: "2025",
+    title: "Dabinchi LABs Inc.",
+    description: "Drone Software Intern — Software implementation and autonomous flight technology",
+  },
+  {
+    icon: Building2,
+    period: "2025 - Present",
+    title: "SEESAW D&U Inc.",
+    description: "Autonomous Drone Engineer — AI-based UAV systems and real-world autonomy pipelines",
   },
 ];
 
 const skills = [
-  "Python", "PyTorch", "TensorFlow", "React", "TypeScript",
-  "SQL", "Docker", "Git", "LaTeX",
+  "Python", "Deep Learning", "Computer Vision", "PyTorch",
+  "ROS", "Path Planning", "Object Detection", "UAV Control",
+  "Docker", "Git", "C/C++",
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.1 },
+  }),
+};
 
 const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-          About Me
-        </h2>
-        <div className="w-16 h-0.5 bg-accent mb-12" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            About Me
+          </h2>
+          <div className="w-16 h-0.5 bg-accent mb-6" />
+          <p className="text-muted-foreground max-w-2xl mb-12 leading-relaxed">
+            I received my B.S. in Unmanned Aerial Vehicle Engineering from Kyungwoon University.
+            My background combines research in control systems with hands-on software development
+            for autonomous drone platforms.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-5 gap-16">
           {/* Timeline */}
-          <div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-8">이력</h3>
-            <div className="space-y-8">
-              {timelineItems.map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                    <item.icon className="w-4 h-4 text-accent" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-accent tracking-wide uppercase mb-1">
-                      {item.period}
-                    </p>
-                    <h4 className="font-display text-base font-semibold text-foreground mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-              ))}
+          <div className="md:col-span-3">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-8">
+              Experience Timeline
+            </h3>
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-5 top-0 bottom-0 w-px bg-border" />
+              <div className="space-y-8">
+                {timelineItems.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    custom={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    className="flex gap-4 relative"
+                  >
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-card border-2 border-accent/30 flex items-center justify-center z-10">
+                      <item.icon className="w-4 h-4 text-accent" />
+                    </div>
+                    <div className="pb-2">
+                      <p className="text-xs font-medium text-accent tracking-wide uppercase mb-1">
+                        {item.period}
+                      </p>
+                      <h4 className="font-display text-base font-semibold text-foreground mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Skills */}
-          <div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-8">기술 스택</h3>
-            <div className="flex flex-wrap gap-2">
+          {/* Skills & Interests */}
+          <div className="md:col-span-2">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-8">Tech Stack</h3>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-wrap gap-2"
+            >
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 bg-secondary text-secondary-foreground text-sm font-medium rounded-md"
+                  className="px-3 py-1.5 bg-secondary text-secondary-foreground text-xs font-medium rounded-md border border-border/50"
                 >
                   {skill}
                 </span>
               ))}
-            </div>
+            </motion.div>
 
-            <h3 className="font-display text-xl font-semibold text-foreground mt-12 mb-4">관심 분야</h3>
-            <ul className="space-y-2 text-muted-foreground text-sm">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                자연어처리 (NLP)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                컴퓨터 비전 (Computer Vision)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                데이터 분석 및 시각화
-              </li>
-            </ul>
+            <h3 className="font-display text-xl font-semibold text-foreground mt-12 mb-4">
+              Core Values
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              I am a passionate, skilled, and self-motivated engineer committed to advancing
+              autonomous systems through innovative engineering and continuous learning.
+            </p>
           </div>
         </div>
       </div>
