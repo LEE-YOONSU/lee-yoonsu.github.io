@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowDown, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
+const CV_URL = "https://lee-yoonsu.github.io/assets/documents/cv.pdf";
+
 const HeroSection = () => {
+  const [cvOpen, setCvOpen] = useState(false);
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Background geometric elements */}
