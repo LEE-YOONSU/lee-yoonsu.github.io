@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ResearchDetail from "./pages/ResearchDetail.tsx";
+import ProjectDetail from "./pages/ProjectDetail.tsx";
 
 const queryClient = new QueryClient();
 
