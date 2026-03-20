@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, FileText } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+
+const CV_URL = "https://lee-yoonsu.github.io/assets/documents/cv.pdf";
 
 const HeroSection = () => {
+  const [cvOpen, setCvOpen] = useState(false);
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Background geometric elements */}
@@ -66,7 +72,29 @@ const HeroSection = () => {
             >
               Research Experience
             </a>
+            <button
+              onClick={() => setCvOpen(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-medium text-sm rounded-md hover:bg-accent/90 transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              CV
+            </button>
           </motion.div>
+
+          {/* CV Dialog */}
+          <Dialog open={cvOpen} onOpenChange={setCvOpen}>
+            <DialogContent className="max-w-4xl h-[85vh] p-0">
+              <DialogHeader className="px-6 pt-6 pb-2">
+                <DialogTitle className="font-display">Curriculum Vitae</DialogTitle>
+              </DialogHeader>
+              <iframe
+                src={CV_URL}
+                className="w-full flex-1 border-t"
+                style={{ height: "calc(85vh - 80px)" }}
+                title="CV PDF"
+              />
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Right: Info Card */}
