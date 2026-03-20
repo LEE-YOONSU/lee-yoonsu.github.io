@@ -72,7 +72,29 @@ const HeroSection = () => {
             >
               Research Experience
             </a>
+            <button
+              onClick={() => setCvOpen(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-medium text-sm rounded-md hover:bg-accent/90 transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              CV
+            </button>
           </motion.div>
+
+          {/* CV Dialog */}
+          <Dialog open={cvOpen} onOpenChange={setCvOpen}>
+            <DialogContent className="max-w-4xl h-[85vh] p-0">
+              <DialogHeader className="px-6 pt-6 pb-2">
+                <DialogTitle className="font-display">Curriculum Vitae</DialogTitle>
+              </DialogHeader>
+              <iframe
+                src={CV_URL}
+                className="w-full flex-1 border-t"
+                style={{ height: "calc(85vh - 80px)" }}
+                title="CV PDF"
+              />
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Right: Info Card */}
