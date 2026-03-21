@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Research", href: "#research" },
-  { label: "Projects", href: "#projects" },
-  { label: "Activities", href: "#activities" },
-  { label: "Contact", href: "#contact" },
-];
+import LanguageToggle from "./LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navItems = [
+    { label: t("소개", "About"), href: "#about" },
+    { label: t("연구", "Research"), href: "#research" },
+    { label: t("프로젝트", "Projects"), href: "#projects" },
+    { label: t("활동", "Activities"), href: "#activities" },
+    { label: t("연락처", "Contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -43,6 +46,7 @@ const Navigation = () => {
           ))}
         </ul>
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             className="md:hidden p-2 text-foreground"
@@ -53,7 +57,6 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b">
           <ul className="px-6 py-4 space-y-3">

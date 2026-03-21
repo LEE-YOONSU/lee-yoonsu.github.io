@@ -1,14 +1,17 @@
 import { Mail, Github, Linkedin, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const links = [
-  { icon: Mail, label: "Email", href: "mailto:yoonsu.lee@example.com" },
+  { icon: Mail, label: "Email", href: "mailto:peter119105@naver.com" },
   { icon: Github, label: "GitHub", href: "https://github.com/lee-yoonsu", external: true },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", external: true },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com", external: true },
+  { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@YoonsuLee1", external: true },
 ];
 
 const ContactSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-3xl mx-auto text-center">
@@ -19,12 +22,14 @@ const ContactSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get in Touch
+            {t("연락처", "Get in Touch")}
           </h2>
           <div className="w-16 h-0.5 bg-accent mx-auto mb-8" />
           <p className="text-muted-foreground mb-10 leading-relaxed">
-            Feel free to reach out for research collaborations, 
-            graduate school inquiries, or career opportunities.
+            {t(
+              "연구 협업, 대학원 문의, 채용 관련 연락을 환영합니다.",
+              "Feel free to reach out for research collaborations, graduate school inquiries, or career opportunities."
+            )}
           </p>
         </motion.div>
 

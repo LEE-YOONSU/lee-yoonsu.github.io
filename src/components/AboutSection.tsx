@@ -1,38 +1,6 @@
 import { GraduationCap, Briefcase, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
-
-const timelineItems = [
-  {
-    icon: GraduationCap,
-    period: "2020 - 2025",
-    title: "Kyungwoon University",
-    description: "B.S. in Unmanned Aerial Vehicle Engineering",
-  },
-  {
-    icon: Briefcase,
-    period: "2023 - 2025",
-    title: "Control Systems Laboratory",
-    description: "Undergraduate Researcher — UAV control, navigation, and autonomous flight systems",
-  },
-  {
-    icon: Building2,
-    period: "2025",
-    title: "Dabinchi LABs Inc.",
-    description: "Drone Software Intern — Software implementation and autonomous flight technology",
-  },
-  {
-    icon: Building2,
-    period: "2025 - Present",
-    title: "SEESAW D&U Inc.",
-    description: "Autonomous Drone Engineer — AI-based UAV systems and real-world autonomy pipelines",
-  },
-];
-
-const skills = [
-  "Python", "Deep Learning", "Computer Vision", "PyTorch",
-  "ROS", "Path Planning", "Object Detection", "UAV Control",
-  "Docker", "Git", "C/C++",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -44,6 +12,50 @@ const fadeUp = {
 };
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+
+  const timelineItems = [
+    {
+      icon: GraduationCap,
+      period: "2020 - 2025",
+      title: t("경운대학교", "Kyungwoon University"),
+      description: t("무인항공기공학과 학사", "B.S. in Unmanned Aerial Vehicle Engineering"),
+    },
+    {
+      icon: Briefcase,
+      period: "2023 - 2025",
+      title: t("제어시스템 연구실", "Control Systems Laboratory"),
+      description: t(
+        "학부 연구원 — UAV 제어, 항법, 자율비행 시스템",
+        "Undergraduate Researcher — UAV control, navigation, and autonomous flight systems"
+      ),
+    },
+    {
+      icon: Building2,
+      period: "2025",
+      title: "Dabinchi LABs Inc.",
+      description: t(
+        "드론 소프트웨어 인턴 — 소프트웨어 구현 및 자율비행 기술",
+        "Drone Software Intern — Software implementation and autonomous flight technology"
+      ),
+    },
+    {
+      icon: Building2,
+      period: "2025 - Present",
+      title: "SEESAW D&U Inc.",
+      description: t(
+        "자율비행 드론 엔지니어 — AI 기반 UAV 시스템 및 실전 자율비행 파이프라인",
+        "Autonomous Drone Engineer — AI-based UAV systems and real-world autonomy pipelines"
+      ),
+    },
+  ];
+
+  const skills = [
+    "Python", "Deep Learning", "Computer Vision", "PyTorch",
+    "ROS", "Path Planning", "Object Detection", "UAV Control",
+    "Docker", "Git", "C/C++",
+  ];
+
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -54,24 +66,23 @@ const AboutSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            About Me
+            {t("소개", "About Me")}
           </h2>
           <div className="w-16 h-0.5 bg-accent mb-6" />
           <p className="text-muted-foreground max-w-2xl mb-12 leading-relaxed">
-            I received my B.S. in Unmanned Aerial Vehicle Engineering from Kyungwoon University.
-            My background combines research in control systems with hands-on software development
-            for autonomous drone platforms.
+            {t(
+              "경운대학교 무인항공기공학과에서 학사 학위를 받았습니다. 제어 시스템 연구와 자율비행 드론 플랫폼 소프트웨어 개발 경험을 갖추고 있습니다.",
+              "I received my B.S. in Unmanned Aerial Vehicle Engineering from Kyungwoon University. My background combines research in control systems with hands-on software development for autonomous drone platforms."
+            )}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-5 gap-16">
-          {/* Timeline */}
           <div className="md:col-span-3">
             <h3 className="font-display text-xl font-semibold text-foreground mb-8">
-              Experience Timeline
+              {t("경력 타임라인", "Experience Timeline")}
             </h3>
             <div className="relative">
-              {/* Timeline line */}
               <div className="absolute left-5 top-0 bottom-0 w-px bg-border" />
               <div className="space-y-8">
                 {timelineItems.map((item, i) => (
@@ -102,9 +113,10 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Skills & Interests */}
           <div className="md:col-span-2">
-            <h3 className="font-display text-xl font-semibold text-foreground mb-8">Tech Stack</h3>
+            <h3 className="font-display text-xl font-semibold text-foreground mb-8">
+              {t("기술 스택", "Tech Stack")}
+            </h3>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -123,11 +135,13 @@ const AboutSection = () => {
             </motion.div>
 
             <h3 className="font-display text-xl font-semibold text-foreground mt-12 mb-4">
-              Core Values
+              {t("핵심 가치", "Core Values")}
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              I am a passionate, skilled, and self-motivated engineer committed to advancing
-              autonomous systems through innovative engineering and continuous learning.
+              {t(
+                "혁신적인 엔지니어링과 지속적인 학습을 통해 자율 시스템을 발전시키는 데 열정을 가진 엔지니어입니다.",
+                "I am a passionate, skilled, and self-motivated engineer committed to advancing autonomous systems through innovative engineering and continuous learning."
+              )}
             </p>
           </div>
         </div>
