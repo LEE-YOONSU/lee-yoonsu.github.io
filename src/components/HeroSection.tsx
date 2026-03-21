@@ -3,6 +3,8 @@ import { ArrowDown, FileText } from "lucide-react";
 import { profileImage } from "@/assets/pages/home/hero";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const cvPdfUrl = "/Yoon-su%20Lee%20%7C%20CV.pdf";
+
 const HeroSection = () => {
   const { t } = useLanguage();
   const profileCardAnimation = {
@@ -144,7 +146,7 @@ const HeroSection = () => {
               {t("연구 경험", "Research Experience")}
             </a>
             <a
-              href="/cv"
+              href={cvPdfUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-w-0 flex-1 justify-center items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-2.5 md:py-3 bg-accent text-accent-foreground font-medium text-[11px] sm:text-xs md:text-sm rounded-md hover:bg-accent/90 transition-colors whitespace-nowrap"

@@ -9,7 +9,6 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ResearchDetail from "./pages/ResearchDetail.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
-import CV from "./pages/CV.tsx";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +22,6 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/cv" element={<CV />} />
               <Route path="/research/:slug" element={<ResearchDetail />} />
               <Route path="/project/:slug" element={<ProjectDetail />} />
               <Route path="*" element={<NotFound />} />
