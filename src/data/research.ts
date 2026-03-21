@@ -1,3 +1,9 @@
+import {
+  deepLearningReconnaissanceImage,
+  nonGpsSwarmImage,
+  visionAutonomousFlightImage,
+} from "@/assets/pages/research";
+
 export interface ResearchExperience {
   slug: string;
   title: string;
@@ -31,7 +37,7 @@ export const researchExperiences: ResearchExperience[] = [
       "Computer vision and autonomy software for stable UAV flight with perception-driven decision making.",
     summaryKo:
       "인식 기반 의사결정을 통한 안정적인 UAV 비행을 위한 컴퓨터 비전 및 자율 소프트웨어.",
-    image: "https://lee-yoonsu.github.io/assets/images/unnamed.png",
+    image: visionAutonomousFlightImage,
     tags: ["Deep Learning", "Road Recognition", "Path Planning"],
     period: "2023 - 2024",
     role: "Lead Researcher",
@@ -58,7 +64,7 @@ export const researchExperiences: ResearchExperience[] = [
       "Localization and coordination research for multi-agent drone operation in GPS-denied environments using UWB-based indoor positioning.",
     summaryKo:
       "UWB 기반 실내 측위를 활용한 GPS 음영 환경에서의 다중 드론 위치 추정 및 군집 제어 연구.",
-    image: "https://lee-yoonsu.github.io/assets/images/unnamed%20(1).png",
+    image: nonGpsSwarmImage,
     tags: ["UWB", "Swarm Control", "Indoor Positioning"],
     period: "2024",
     role: "Researcher",
@@ -85,7 +91,7 @@ export const researchExperiences: ResearchExperience[] = [
       "Deep learning based aerial reconnaissance workflows for scene understanding and mission support using modern object detection models.",
     summaryKo:
       "최신 객체 탐지 모델을 활용한 딥러닝 기반 항공 정찰 워크플로우.",
-    image: "https://lee-yoonsu.github.io/assets/images/unnamed%20(2).png",
+    image: deepLearningReconnaissanceImage,
     tags: ["Computer Vision", "Object Detection", "Real-time"],
     period: "2023 - 2024",
     role: "Developer",

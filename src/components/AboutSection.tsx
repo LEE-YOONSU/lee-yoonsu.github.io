@@ -57,7 +57,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-20 md:py-24 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ const AboutSection = () => {
             {t("소개", "About Me")}
           </h2>
           <div className="w-16 h-0.5 bg-accent mb-6" />
-          <p className="text-muted-foreground max-w-2xl mb-12 leading-relaxed">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mb-10 md:mb-12 leading-relaxed text-balance">
             {t(
               "경운대학교 무인항공기공학과에서 학사 학위를 받았습니다. 제어 시스템 연구와 자율비행 드론 플랫폼 소프트웨어 개발 경험을 갖추고 있습니다.",
               "I received my B.S. in Unmanned Aerial Vehicle Engineering from Kyungwoon University. My background combines research in control systems with hands-on software development for autonomous drone platforms."
@@ -77,14 +77,14 @@ const AboutSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-5 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16">
           <div className="md:col-span-3">
-            <h3 className="font-display text-xl font-semibold text-foreground mb-8">
+            <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mb-6 md:mb-8">
               {t("경력 타임라인", "Experience Timeline")}
             </h3>
             <div className="relative">
-              <div className="absolute left-5 top-0 bottom-0 w-px bg-border" />
-              <div className="space-y-8">
+              <div className="absolute left-4 sm:left-5 top-0 bottom-0 w-px bg-border" />
+              <div className="space-y-6 md:space-y-8">
                 {timelineItems.map((item, i) => (
                   <motion.div
                     key={i}
@@ -93,19 +93,19 @@ const AboutSection = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
-                    className="flex gap-4 relative"
+                    className="flex gap-3 sm:gap-4 relative"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-card border-2 border-accent/30 flex items-center justify-center z-10">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-card border-2 border-accent/30 flex items-center justify-center z-10">
                       <item.icon className="w-4 h-4 text-accent" />
                     </div>
-                    <div className="pb-2">
+                    <div className="pb-2 min-w-0">
                       <p className="text-xs font-medium text-accent tracking-wide uppercase mb-1">
                         {item.period}
                       </p>
-                      <h4 className="font-display text-base font-semibold text-foreground mb-1">
+                      <h4 className="font-display text-sm sm:text-base font-semibold text-foreground mb-1 break-words">
                         {item.title}
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed break-words">{item.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -114,7 +114,7 @@ const AboutSection = () => {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="font-display text-xl font-semibold text-foreground mb-8">
+            <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mb-6 md:mb-8">
               {t("기술 스택", "Tech Stack")}
             </h3>
             <motion.div
@@ -134,10 +134,10 @@ const AboutSection = () => {
               ))}
             </motion.div>
 
-            <h3 className="font-display text-xl font-semibold text-foreground mt-12 mb-4">
+            <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mt-10 md:mt-12 mb-4">
               {t("핵심 가치", "Core Values")}
             </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed break-words">
               {t(
                 "혁신적인 엔지니어링과 지속적인 학습을 통해 자율 시스템을 발전시키는 데 열정을 가진 엔지니어입니다.",
                 "I am a passionate, skilled, and self-motivated engineer committed to advancing autonomous systems through innovative engineering and continuous learning."

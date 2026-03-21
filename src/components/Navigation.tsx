@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -29,8 +30,8 @@ const Navigation = () => {
         scrolled ? "bg-background/90 backdrop-blur-md border-b" : "bg-transparent"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-display text-lg font-semibold text-foreground tracking-tight">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+        <a href="#" className="font-display text-base sm:text-lg font-semibold text-foreground tracking-tight whitespace-nowrap">
           YS Lee
         </a>
         <ul className="hidden md:flex items-center gap-8">
@@ -45,35 +46,44 @@ const Navigation = () => {
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <LanguageToggle />
           <ThemeToggle />
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground rounded-md hover:bg-secondary transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-b">
-          <ul className="px-6 py-4 space-y-3">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-background/95 backdrop-blur-md border-b overflow-hidden"
+          >
+            <ul className="px-4 sm:px-6 py-4 space-y-3">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-md px-2 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

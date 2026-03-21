@@ -13,7 +13,7 @@ const ContactSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="py-24 px-6">
+    <section id="contact" className="py-20 md:py-24 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ const ContactSection = () => {
             {t("연락처", "Get in Touch")}
           </h2>
           <div className="w-16 h-0.5 bg-accent mx-auto mb-8" />
-          <p className="text-muted-foreground mb-10 leading-relaxed">
+          <p className="text-sm md:text-base text-muted-foreground mb-8 md:mb-10 leading-relaxed text-balance">
             {t(
               "연구 협업, 대학원 문의, 채용 관련 연락을 환영합니다.",
               "Feel free to reach out for research collaborations, graduate school inquiries, or career opportunities."
@@ -38,7 +38,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-wrap items-stretch justify-center gap-3 sm:gap-4"
         >
           {links.map((link) => (
             <a
@@ -46,7 +46,7 @@ const ContactSection = () => {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-2 px-5 py-3 bg-card border rounded-lg text-sm font-medium text-foreground hover:border-accent/50 hover:shadow-md transition-all duration-200"
+              className="flex min-w-[140px] items-center justify-center gap-2 px-4 sm:px-5 py-3 bg-card border rounded-lg text-sm font-medium text-foreground hover:border-accent/50 hover:shadow-md transition-all duration-200"
             >
               <link.icon className="w-4 h-4 text-accent" />
               {link.label}
@@ -55,7 +55,7 @@ const ContactSection = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-5xl mx-auto mt-20 pt-8 border-t text-center">
+      <div className="max-w-5xl mx-auto mt-16 md:mt-20 pt-8 border-t text-center">
         <p className="text-xs text-muted-foreground">
           © 2025 Yoon-su Lee. All rights reserved.
         </p>

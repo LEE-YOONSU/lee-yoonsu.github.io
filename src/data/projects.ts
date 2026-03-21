@@ -1,3 +1,8 @@
+import {
+  deepLearningReconnaissanceProjectImage,
+  visionAutonomousFlightSystemImage,
+} from "@/assets/pages/projects";
+
 export interface Project {
   slug: string;
   title: string;
@@ -38,7 +43,7 @@ export const projects: Project[] = [
       "인식된 도로 기하학을 기반으로 안전한 비행 경로를 생성하는 경로 계획 모듈을 설계하고 통합했습니다.",
       "GPS 보조 내비게이션과 비전 기반 보정을 결합하여 야외 테스트 환경에서 안정적인 자율비행을 달성했습니다.",
     ],
-    images: ["https://lee-yoonsu.github.io/assets/images/unnamed.png"],
+    images: [visionAutonomousFlightSystemImage],
   },
   {
     slug: "deep-learning-reconnaissance",
@@ -64,6 +69,6 @@ export const projects: Project[] = [
       "드론 탑재 엣지 컴퓨팅 하드웨어에서의 배포를 위해 추론 파이프라인을 최적화했습니다.",
       "실시간 상황 인식 디스플레이를 위해 탐지 결과를 매핑 시스템과 통합했습니다.",
     ],
-    images: ["https://lee-yoonsu.github.io/assets/images/unnamed%20(2).png"],
+    images: [deepLearningReconnaissanceProjectImage],
   },
 ];
