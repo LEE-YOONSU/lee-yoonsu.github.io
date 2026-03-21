@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowDown, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { profileImage } from "@/assets/pages/home/hero";
+import cvPdf from "@/CV_YoonsuLee.pdf";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-const CV_URL = "https://lee-yoonsu.github.io/assets/documents/cv.pdf";
 
 const HeroSection = () => {
   const [cvOpen, setCvOpen] = useState(false);
@@ -163,7 +162,7 @@ const HeroSection = () => {
                 <DialogTitle className="font-display">Curriculum Vitae</DialogTitle>
               </DialogHeader>
               <iframe
-                src={CV_URL}
+                src={cvPdf}
                 className="w-full flex-1 border-t"
                 style={{ height: "calc(85vh - 80px)" }}
                 title="CV PDF"
