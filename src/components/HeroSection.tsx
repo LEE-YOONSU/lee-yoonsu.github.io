@@ -1,13 +1,9 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, FileText } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { profileImage } from "@/assets/pages/home/hero";
-import cvPdf from "@/CV_YoonsuLee.pdf";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
-  const [cvOpen, setCvOpen] = useState(false);
   const { t } = useLanguage();
   const profileCardAnimation = {
     initial: { opacity: 0, scale: 0.95, y: 20 },
@@ -147,28 +143,16 @@ const HeroSection = () => {
             >
               {t("연구 경험", "Research Experience")}
             </a>
-            <button
-              onClick={() => setCvOpen(true)}
+            <a
+              href="/cv"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-w-0 flex-1 justify-center items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-2.5 md:py-3 bg-accent text-accent-foreground font-medium text-[11px] sm:text-xs md:text-sm rounded-md hover:bg-accent/90 transition-colors whitespace-nowrap"
             >
               <FileText className="w-3.5 h-3.5 md:w-4 md:h-4" />
               CV
-            </button>
+            </a>
           </motion.div>
-
-          <Dialog open={cvOpen} onOpenChange={setCvOpen}>
-            <DialogContent className="max-w-4xl h-[85vh] p-0">
-              <DialogHeader className="px-4 sm:px-6 pt-5 sm:pt-6 pb-2">
-                <DialogTitle className="font-display">Curriculum Vitae</DialogTitle>
-              </DialogHeader>
-              <iframe
-                src={cvPdf}
-                className="w-full flex-1 border-t"
-                style={{ height: "calc(85vh - 80px)" }}
-                title="CV PDF"
-              />
-            </DialogContent>
-          </Dialog>
         </div>
 
         <motion.div
