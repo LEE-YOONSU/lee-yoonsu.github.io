@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const ResearchDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const research = researchExperiences.find((r) => r.slug === slug);
 
   if (!research) {
