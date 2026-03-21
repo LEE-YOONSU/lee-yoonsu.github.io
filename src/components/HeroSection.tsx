@@ -3,7 +3,7 @@ import { ArrowDown, FileText } from "lucide-react";
 import { profileImage } from "@/assets/pages/home/hero";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const cvPdfUrl = "/documents/Yoon-su%20Lee%20%7C%20CV.pdf";
+const cvPdfUrl = "/documents/yoon-su-lee-cv.pdf";
 
 const HeroSection = () => {
   const { t } = useLanguage();
