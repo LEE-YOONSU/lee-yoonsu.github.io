@@ -26,7 +26,7 @@ const ProjectDetail = () => {
 
   const title = t(project.title, project.titleEn || project.title);
   const description = t(project.descriptionKo || project.description, project.description);
-  const details = t(project.detailsKo || project.details, project.details) as unknown as string[];
+  const details = lang === "ko" ? (project.detailsKo || project.details) : project.details;
   const role = t(project.roleKo || project.role, project.role);
 
   return (

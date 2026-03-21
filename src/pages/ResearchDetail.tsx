@@ -25,7 +25,7 @@ const ResearchDetail = () => {
   }
 
   const title = t(research.titleKo || research.title, research.title);
-  const details = t(research.detailsKo || research.details, research.details) as unknown as string[];
+  const details = lang === "ko" ? (research.detailsKo || research.details) : research.details;
   const summary = t(research.summaryKo || research.summary, research.summary);
   const role = t(research.roleKo || research.role, research.role);
 
