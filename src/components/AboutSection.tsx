@@ -11,6 +11,24 @@ const fadeUp = {
   }),
 };
 
+const renderPeriod = (period: string) => {
+  const parts = period.split(" - ");
+
+  if (parts.length !== 2) {
+    return period;
+  }
+
+  return (
+    <>
+      <span>{parts[0]}</span>
+      <span aria-hidden="true" className="px-1">
+        -
+      </span>
+      <span>{parts[1]}</span>
+    </>
+  );
+};
+
 const AboutSection = () => {
   const { t } = useLanguage();
 
@@ -100,7 +118,7 @@ const AboutSection = () => {
                     </div>
                     <div className="pb-2 min-w-0">
                       <p className="text-xs font-medium text-accent tracking-wide uppercase mb-1">
-                        {item.period}
+                        {renderPeriod(item.period)}
                       </p>
                       <h4 className="font-display text-sm sm:text-base font-semibold text-foreground mb-1 break-words">
                         {item.title}
