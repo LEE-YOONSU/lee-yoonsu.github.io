@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowDown, FileText, Github } from "lucide-react";
+import { ArrowDown, FileText } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import profileLifestyleImage from "@/assets/pages/home/about/profile-lifestyle.webp";
 
 const portfolioPdfUrl = "/documents/lee-yoonsu-portfolio-2026.pdf";
+const resumePdfUrl = "/documents/lee-yoonsu-resume-2026.pdf";
 
 const AboutIntroSection = () => {
   const { t } = useLanguage();
@@ -61,11 +62,11 @@ const AboutIntroSection = () => {
               <a href="#projects" className="inline-flex items-center gap-2 rounded-md bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-85">
                 {t("프로젝트 보기", "View projects")} <ArrowDown className="h-4 w-4" />
               </a>
+              <a href={resumePdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
+                <FileText className="h-4 w-4" /> {t("이력서 PDF", "Resume PDF")}
+              </a>
               <a href={portfolioPdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
                 <FileText className="h-4 w-4" /> {t("포트폴리오 PDF", "Portfolio PDF")}
-              </a>
-              <a href="https://github.com/lee-yoonsu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
-                <Github className="h-4 w-4" /> GitHub
               </a>
             </div>
           </motion.div>
