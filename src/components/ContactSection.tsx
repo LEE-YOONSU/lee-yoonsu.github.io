@@ -1,10 +1,11 @@
-import { Mail, Github, Youtube } from "lucide-react";
+import { Mail, Github, Linkedin, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const links = [
   { icon: Mail, label: "Email", href: "mailto:yoonniiverse@gmail.com" },
   { icon: Github, label: "GitHub", href: "https://github.com/lee-yoonsu", external: true },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/yoonsulee", external: true },
   { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@YoonsuLee1", external: true },
 ];
 
