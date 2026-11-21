@@ -4,18 +4,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { t } = useLanguage();
+  const { pathname } = useLocation();
+  const homePrefix = pathname === "/" ? "" : "/";
 
   const navItems = [
-    { label: t("소개", "About"), href: "#about" },
-    { label: t("연구", "Research"), href: "#research" },
-    { label: t("프로젝트", "Projects"), href: "#projects" },
-    { label: t("활동", "Activities"), href: "#activities" },
-    { label: t("연락처", "Contact"), href: "#contact" },
+    { label: t("소개", "About"), href: `${homePrefix}#about` },
+    { label: t("프로젝트", "Projects"), href: `${homePrefix}#projects` },
+    { label: t("경력", "Experience"), href: `${homePrefix}#experience` },
+    { label: t("연락처", "Contact"), href: `${homePrefix}#contact` },
   ];
 
   useEffect(() => {
@@ -30,11 +32,11 @@ const Navigation = () => {
         scrolled ? "bg-background/90 backdrop-blur-md border-b" : "bg-transparent"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-display text-lg font-semibold text-foreground tracking-tight">
-          YS Lee
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <a href={pathname === "/" ? "#about" : "/#about"} className="font-display text-sm font-extrabold tracking-tight text-foreground">
+          YOON-SU LEE
         </a>
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <li key={item.href}>
               <a

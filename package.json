@@ -1,13 +1,13 @@
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.4.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "cp app.html index.html && vite",
+    "build": "cp app.html index.html && vite build && cp dist/index.html index.html",
     "publish:root": "npm run build && bash scripts/publish-root.sh",
-    "build:dev": "vite build --mode development",
+    "build:dev": "cp app.html index.html && vite build --mode development && cp dist/index.html index.html",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

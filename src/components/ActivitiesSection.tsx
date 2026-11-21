@@ -77,18 +77,18 @@ const ActivitiesSection = () => {
   ];
 
   return (
-    <section id="activities" className="py-20 md:py-24 px-4 sm:px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="activities" className="border-t bg-card/75 py-20 md:py-28">
+      <div className="section-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t("활동 및 사진", "Activities & Photos")}
+          <p className="eyebrow">{t("현장 기록", "FIELD NOTES")}</p>
+          <h2 className="mb-10 mt-3 text-4xl font-extrabold tracking-[-0.045em] md:mb-12 md:text-5xl">
+            {t("화면 밖에서도 직접 부딪힙니다.", "Building happens beyond the screen.")}
           </h2>
-          <div className="w-16 h-0.5 bg-accent mb-10 md:mb-12" />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

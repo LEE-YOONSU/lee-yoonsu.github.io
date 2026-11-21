@@ -26,6 +26,10 @@ export interface ResearchExperience {
   metaItems?: ResearchMetaItem[];
   metaItemsKo?: ResearchMetaItem[];
   richContent?: ResearchRichContent;
+  demoUrl?: string;
+  demoLabel?: string;
+  demoLabelKo?: string;
+  articleUrl?: string;
 }
 
 export interface ResearchInterest {
@@ -180,6 +184,9 @@ export const researchExperiences: ResearchExperience[] = [
     periodKo: "2025.10 ~",
     role: "Vision · Path Planning · Offboard Control Integration",
     roleKo: "Vision · Path Planning · Offboard Control 통합 개발",
+    demoUrl: "https://drive.google.com/file/d/1qBiBtRES01zBIRXq9-9NfFgXpI64v9bd/view?usp=drive_link",
+    demoLabel: "Watch autonomous-flight demo",
+    demoLabelKo: "자율비행 시연 영상",
     heroEyebrow: "Research · SEESAW D&U Drone SW Team · Since 2025.10",
     heroEyebrowKo: "Research · (주)시소D&U Drone SW Team · 2025.10 ~",
     metaItems: [
@@ -664,40 +671,46 @@ export const researchExperiences: ResearchExperience[] = [
     title: "UWB-Based Non-GPS Indoor Autonomous Flight System",
     titleKo: "UWB 기반 Non-GPS Indoor 자동비행 시스템",
     summary:
-      "An indoor autonomous-flight system that injects UWB-based localization as fake GPS, enabling autopilot-driven flight without modifying PX4 or ArduPilot internals.",
+      "A UWB-to-fake-GPS indoor flight system deployed across 14 UAVs at Incheon Airport Terminal 2, enabling autopilot-driven flight without modifying PX4 or ArduPilot internals.",
     summaryKo:
-      "GPS 수신이 불가능한 실내 환경에서 UWB 위치 추정과 Fake GPS 전략을 결합하여, Autopilot 내부 로직 수정 없이 자동비행을 구현한 Indoor Flight 시스템 연구.",
+      "UWB 위치 추정을 Fake GPS로 변환해 Autopilot 수정 없이 실내 자동비행을 구현하고, 인천공항 T2에서 14대 군집비행에 적용한 시스템 연구.",
     image: nonGpsSwarmImage,
     tags: ["Python", "MAVLink", "UWB", "PX4", "ArduPilot", "Fake GPS", "Wi-Fi Mesh", "Multi-UAV"],
     period: "2024.09 - 2025.02",
     periodKo: "2024.09 - 2025.02",
     role: "Fake GPS strategy design and multi-vehicle control implementation",
     roleKo: "Fake GPS 전략 설계 · 다중 기체 제어 구현",
+    demoUrl: "https://drive.google.com/file/d/1tmG9AYOmr9Kq5fifvx3XUG22dlfVjw1l/view?usp=drive_link",
+    demoLabel: "Watch indoor-flight demo",
+    demoLabelKo: "실내 군집비행 시연 영상",
+    articleUrl: "https://www.dronejournal.net/news/articleView.html?idxno=582",
     heroEyebrow: "Research · Da Vinci Labs Drone SW Team · 2024.09 - 2025.02",
     heroEyebrowKo: "Research · (주)다빈치랩스 Drone SW Team · 2024.09 - 2025.02",
     metaItems: [
       { label: "Affiliation", value: "Drone SW Team, Da Vinci Labs Inc." },
       { label: "Role", value: "Fake GPS Strategy Design · Multi-UAV Control" },
-      { label: "Validation", value: "Indoor Real-Flight at Incheon Int'l Airport" },
-      { label: "Status", value: "Confidential — Code & Video Not Disclosed" },
+      { label: "Validation", value: "14 UAVs · Incheon Airport T2" },
+      { label: "Outcome", value: "Applied work received iF Design Award 2025" },
     ],
     metaItemsKo: [
       { label: "Affiliation", value: "(주)다빈치랩스 드론SW팀 인턴" },
       { label: "Role", value: "Fake GPS 전략 설계 · 다중 기체 제어 구현" },
-      { label: "Validation", value: "인천국제공항 실내 실비행 검증" },
-      { label: "Status", value: "기밀 보호 - 코드·영상 미공개" },
+      { label: "Validation", value: "인천공항 T2 · 14대 실내 군집비행" },
+      { label: "Outcome", value: "적용 작품 iF Design Award 2025 수상" },
     ],
     details: [
       "Designed a fake-GPS pipeline that converts UWB local coordinates into MAVLink GPS messages so that the flight controller can use standard auto-flight modes indoors.",
       "Built a companion-computer workflow that injects latitude, longitude, and altitude estimates at controller-compatible timing without touching autopilot internals.",
       "Extended the system from a single vehicle to multiple UAVs over Wi-Fi mesh networking with UDP-based MAVLink communication and vehicle-level identification.",
       "Validated hover, coordinate-tracking, and multi-vehicle control scenarios in a real indoor environment at Incheon International Airport.",
+      "Scaled the system to 14 UAVs split across the east and west zones of Incheon Airport Terminal 2; the installation later received an iF Design Award 2025.",
     ],
     detailsKo: [
       "UWB 로컬 좌표를 MAVLink GPS 메시지로 변환하는 Fake GPS 파이프라인을 설계하여, 실내에서도 Flight Controller의 기존 자동비행 모드를 그대로 사용할 수 있도록 구현했습니다.",
       "Autopilot 내부를 수정하지 않고도 위도·경도·고도를 Companion Computer에서 주입할 수 있도록 좌표 변환 및 송신 주기를 설계했습니다.",
       "Wi-Fi Mesh 기반 MAVLink over UDP 구조로 단일 기체 시스템을 다중 기체 제어로 확장하고 Vehicle ID 기반 운용 구조를 구성했습니다.",
       "인천국제공항 실내 환경에서 호버링, 좌표 추종, 다중 기체 제어 시나리오를 실제 비행으로 검증했습니다.",
+      "인천공항 제2여객터미널 동·서 구역에 각 7대, 총 14대를 적용했으며 해당 상설 작품은 iF Design Award 2025를 수상했습니다.",
     ],
     techStack: ["Python", "MAVLink", "UWB", "PX4", "ArduPilot", "Wi-Fi Mesh", "UDP", "GCS"],
     richContent: {
