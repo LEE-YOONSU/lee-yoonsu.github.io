@@ -106,14 +106,21 @@ const CaseStudyDetail = ({ data }: { data: CaseStudyData }) => {
               </div>
               <div className="grid grid-cols-[88px_1fr] gap-4 py-4">
                 <dt className="font-semibold">{t("기술", "Stack")}</dt>
-                <dd className="leading-6 text-muted-foreground">{data.tech.join(" · ")}</dd>
+                <dd className="leading-6 text-muted-foreground">
+                  {data.tech.map((item, index) => (
+                    <span key={item} className="whitespace-nowrap">
+                      {item}
+                      {index < data.tech.length - 1 ? " · " : ""}
+                    </span>
+                  ))}
+                </dd>
               </div>
             </dl>
 
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div className="grid grid-cols-3 gap-3 sm:gap-5">
               {data.metrics.map((metric) => (
-                <div key={`${metric.value}-${metric.label.en}`} className="border-l pl-4 first:border-l-0 first:pl-0">
-                  <p className="text-2xl font-extrabold tracking-[-0.03em] text-accent md:text-3xl">{metric.value}</p>
+                <div key={`${metric.value}-${metric.label.en}`} className="min-w-0 border-l pl-3 first:border-l-0 first:pl-0 sm:pl-4">
+                  <p className="whitespace-nowrap text-lg font-extrabold tracking-[-0.03em] text-accent sm:text-2xl md:text-3xl">{metric.value}</p>
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">{localize(metric.label)}</p>
                 </div>
               ))}
@@ -159,7 +166,7 @@ const CaseStudyDetail = ({ data }: { data: CaseStudyData }) => {
             </h2>
             <ol className="border-t">
               {data.details.map((detail, index) => (
-                <li key={detail.en} className="grid gap-3 border-b py-6 sm:grid-cols-[48px_1fr]">
+                <li key={detail.en} className="grid gap-3 border-b py-6 last:border-b-0 last:pb-0 sm:grid-cols-[48px_1fr]">
                   <span className="text-sm font-bold text-accent">{String(index + 1).padStart(2, "0")}</span>
                   <p className="text-sm leading-7 text-muted-foreground md:text-base">{localize(detail)}</p>
                 </li>
@@ -173,12 +180,12 @@ const CaseStudyDetail = ({ data }: { data: CaseStudyData }) => {
             <h2 className="text-3xl font-extrabold tracking-[-0.04em] md:text-4xl">
               {localize(data.stepsTitle || { ko: "작동 흐름", en: "How it works" })}
             </h2>
-            <div className="mt-8 grid gap-0 border-y md:grid-cols-5 md:divide-x">
+            <div className="mt-8 grid gap-0 border-t md:border-y md:grid-cols-5 md:divide-x">
               {data.steps.map((step, index) => (
-                <div key={step.title.en} className="border-b px-0 py-6 last:border-b-0 md:border-b-0 md:px-5 md:first:pl-0 md:last:pr-0">
+                <div key={step.title.en} className="border-b px-0 py-6 last:border-b-0 last:pb-0 md:border-b-0 md:px-5 md:pb-6 md:first:pl-0 md:last:pr-0">
                   <p className="text-sm font-extrabold text-accent">{String(index + 1).padStart(2, "0")}</p>
                   <h3 className="mt-2 text-lg font-extrabold">{localize(step.title)}</h3>
-                  <p className="mt-2 text-xs leading-6 text-muted-foreground">{localize(step.description)}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground md:text-xs">{localize(step.description)}</p>
                 </div>
               ))}
             </div>
@@ -215,7 +222,7 @@ const CaseStudyDetail = ({ data }: { data: CaseStudyData }) => {
             </h2>
             <dl className="border-t">
               {data.results.map((result) => (
-                <div key={`${result.value}-${result.label.en}`} className="grid gap-2 border-b py-5 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8">
+                <div key={`${result.value}-${result.label.en}`} className="grid gap-2 border-b py-5 last:border-b-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8">
                   <div>
                     <dt className="font-semibold">{localize(result.label)}</dt>
                     {result.detail ? <dd className="mt-1 text-xs leading-5 text-muted-foreground">{localize(result.detail)}</dd> : null}
@@ -235,7 +242,7 @@ const CaseStudyDetail = ({ data }: { data: CaseStudyData }) => {
               </h2>
               <ul className="border-t">
                 {data.notes.map((note) => (
-                  <li key={note.en} className="flex gap-4 border-b py-5 text-sm leading-7 text-muted-foreground md:text-base">
+                  <li key={note.en} className="flex gap-4 border-b py-5 text-sm leading-7 text-muted-foreground last:border-b-0 last:pb-0 md:text-base">
                     <span className="mt-3 h-1.5 w-1.5 shrink-0 bg-accent" />
                     <span>{localize(note)}</span>
                   </li>

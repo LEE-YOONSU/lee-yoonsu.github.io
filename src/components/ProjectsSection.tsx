@@ -17,7 +17,7 @@ type ArchiveEntry = {
   period: string;
   image: string;
   tech: string[];
-  evidence: Array<{ value: string; labelKo: string; labelEn: string }>;
+  evidence: Array<{ value: string; valueKo?: string; labelKo: string; labelEn: string }>;
   externalUrl?: string;
   externalLabelKo?: string;
   externalLabelEn?: string;
@@ -47,6 +47,8 @@ const normalizeProject = (project: Project): ArchiveEntry => ({
 
 const normalizeResearch = (research: ResearchExperience): ArchiveEntry => {
   const proof = research.metaItems?.find((item) => ["Validation", "Outcome", "Result"].includes(item.label));
+  const proofKo = proof ? research.metaItemsKo?.find((item) => item.label === proof.label) : undefined;
+  const proofLabelKo: Record<string, string> = { Validation: "검증", Outcome: "성과", Result: "결과" };
 
   return {
     key: `research-${research.slug}`,
@@ -61,9 +63,9 @@ const normalizeResearch = (research: ResearchExperience): ArchiveEntry => {
     image: research.image,
     tech: research.techStack,
     evidence: research.award
-      ? [{ value: research.awardKo || research.award, labelKo: "성과", labelEn: "Recognition" }]
+      ? [{ value: research.award, valueKo: research.awardKo, labelKo: "성과", labelEn: "Recognition" }]
       : proof
-        ? [{ value: proof.valueKo || proof.value, labelKo: proof.labelKo || proof.label, labelEn: proof.label }]
+        ? [{ value: proof.value, valueKo: proofKo?.value || proof.valueKo, labelKo: proof.labelKo || proofLabelKo[proof.label] || proof.label, labelEn: proof.label }]
         : [],
     externalUrl: research.demoUrl,
     externalLabelKo: research.demoLabelKo,
@@ -193,7 +195,7 @@ const ProjectsSection = () => {
                             <dd className="mt-1 space-y-1">
                               {entry.evidence.slice(0, 3).map((proof) => (
                                 <p key={`${proof.value}-${proof.labelEn}`} className="text-sm leading-6">
-                                  <strong>{proof.value}</strong> <span className="text-xs text-muted-foreground">{t(proof.labelKo, proof.labelEn)}</span>
+                                  <strong>{t(proof.valueKo || proof.value, proof.value)}</strong> <span className="text-xs text-muted-foreground">{t(proof.labelKo, proof.labelEn)}</span>
                                 </p>
                               ))}
                             </dd>
@@ -202,10 +204,10 @@ const ProjectsSection = () => {
                       </dl>
 
                       <div className="mt-5 flex flex-wrap gap-x-2 gap-y-1 text-xs text-muted-foreground">
-                        {entry.tech.slice(0, 7).map((technology, techIndex) => (
-                          <span key={technology} className="inline-flex items-center gap-2">
-                            {techIndex > 0 ? <span className="text-border">/</span> : null}
+                        {entry.tech.slice(0, 7).map((technology, techIndex, list) => (
+                          <span key={technology} className="inline-flex items-center gap-2 whitespace-nowrap">
                             {technology}
+                            {techIndex < list.length - 1 ? <span className="text-border">/</span> : null}
                           </span>
                         ))}
                       </div>

@@ -40,7 +40,7 @@ const AboutIntroSection = () => {
             </h1>
             <p className="mt-6 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base md:leading-8">
               {t(
-                "무인항공기공학을 전공하고 UAV 제어·항법 연구에서 출발했습니다. 이후 자율비행과 로보틱스 시스템을 실제 환경에서 구현하고, AI 모델링과 웹 제품 개발까지 작업 범위를 확장했습니다. 분야가 달라도 문제를 정의하고, 직접 만들고, 결과로 검증하는 방식은 같습니다.",
+                "무인기공학을 전공하고 UAV 제어·항법 연구에서 출발했습니다. 이후 자율비행과 로보틱스 시스템을 실제 환경에서 구현하고, AI 모델링과 웹 제품 개발까지 작업 범위를 확장했습니다. 분야가 달라도 문제를 정의하고, 직접 만들고, 결과로 검증하는 방식은 같습니다.",
                 "My background is in UAV engineering, control, and navigation. I have since built autonomous-flight and robotics systems in real environments, while expanding into AI modeling and web products. Across domains, my approach stays the same: frame the problem, build the system, and validate the outcome."
               )}
             </p>
@@ -58,14 +58,14 @@ const AboutIntroSection = () => {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#projects" className="inline-flex items-center gap-2 rounded-md bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-85">
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+              <a href="#projects" className="col-span-2 inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-85">
                 {t("프로젝트 보기", "View projects")} <ArrowDown className="h-4 w-4" />
               </a>
-              <a href={resumePdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
+              <a href={resumePdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
                 <FileText className="h-4 w-4" /> {t("이력서 PDF", "Resume PDF")}
               </a>
-              <a href={portfolioPdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
+              <a href={portfolioPdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border px-5 py-3 text-sm font-semibold hover:bg-secondary/60">
                 <FileText className="h-4 w-4" /> {t("포트폴리오 PDF", "Portfolio PDF")}
               </a>
             </div>

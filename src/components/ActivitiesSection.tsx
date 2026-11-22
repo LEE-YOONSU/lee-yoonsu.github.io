@@ -26,7 +26,7 @@ const ActivitiesSection = () => {
       date: "2025.02",
       title: t("졸업식", "Graduation Ceremony"),
       location: t("경운대학교", "Kyungwoon University"),
-      detail: t("무인항공기공학과 학사", "B.S. in UAV Engineering"),
+      detail: t("무인기공학과 학사", "B.S. in UAV Engineering"),
       image: graduationCeremonyImage,
     },
     {

@@ -684,10 +684,10 @@ export const researchExperiences: ResearchExperience[] = [
     demoLabel: "Watch indoor-flight demo",
     demoLabelKo: "실내 군집비행 시연 영상",
     articleUrl: "https://www.dronejournal.net/news/articleView.html?idxno=582",
-    heroEyebrow: "Research · Da Vinci Labs Drone SW Team · 2024.09 - 2025.02",
+    heroEyebrow: "Research · DaVinci Labs Drone SW Team · 2024.09 - 2025.02",
     heroEyebrowKo: "Research · (주)다빈치랩스 Drone SW Team · 2024.09 - 2025.02",
     metaItems: [
-      { label: "Affiliation", value: "Drone SW Team, Da Vinci Labs Inc." },
+      { label: "Affiliation", value: "Drone SW Team, DaVinci Labs Inc." },
       { label: "Role", value: "Fake GPS Strategy Design · Multi-UAV Control" },
       { label: "Validation", value: "14 UAVs · Incheon Airport T2" },
       { label: "Outcome", value: "Applied work received iF Design Award 2025" },

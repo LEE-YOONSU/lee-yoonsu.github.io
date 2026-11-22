@@ -35,36 +35,27 @@ const AboutSection = () => {
   const timelineItems = [
     {
       icon: GraduationCap,
-      period: "2020.03 - 2025.02",
+      period: "2019.03 - 2025.02",
       title: t("경운대학교", "Kyungwoon University"),
-      description: t("무인항공기공학과 학사", "B.S. in Unmanned Aerial Vehicle Engineering"),
+      description: t("무인기공학과 학사", "B.S. in Unmanned Aerial Vehicle Engineering"),
     },
     {
       icon: Briefcase,
       period: "2023.03 - 2024.08",
-      title: t("제어시스템 연구실", "Control Systems Laboratory"),
-      description: t(
-        "학부 연구원 — UAV 제어, 항법, 자율비행 시스템",
-        "Undergraduate Researcher — UAV control, navigation, and autonomous flight systems"
-      ),
+      title: t("경운대학교 드론제어연구실", "Drone Control Lab, Kyungwoon University"),
+      description: t("학부연구생", "Undergraduate Researcher"),
     },
     {
       icon: Building2,
       period: "2024.09 - 2025.02",
-      title: "Da Vinci Labs Inc.",
-      description: t(
-        "드론 소프트웨어 인턴 — 소프트웨어 구현 및 자율비행 기술",
-        "Drone Software Intern — Software implementation and autonomous flight technology"
-      ),
+      title: "DaVinci Labs Inc.",
+      description: t("드론SW팀 인턴", "Intern, Drone SW Team"),
     },
     {
       icon: Building2,
       period: "2025.10 - Present",
       title: "SEESAW D&U Inc.",
-      description: t(
-        "자율비행 드론 엔지니어 — AI 기반 UAV 시스템 및 실전 자율비행 파이프라인",
-        "Autonomous Drone Engineer — AI-based UAV systems and real-world autonomy pipelines"
-      ),
+      description: t("드론개발연구소 · 드론SW팀 연구원", "Researcher, Drone SW Team · Drone R&D Institute"),
     },
   ];
 
